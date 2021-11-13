@@ -15,9 +15,3 @@ Overall find package to use these variables in other cmake files
 
 Open env.cmake and create a new include directory:
 set(MCC_SOURCES_MYSHAREDINCLUDE ${MCC_SOURCES_SHARED}/MySharedInclude)
-
-Steps:
-ghdl -a file.vhdl # analysis
-ghdl -e ProjectName # elaborate design
-ghdl -r ProjectName # run the design
---std=87, 93, 08

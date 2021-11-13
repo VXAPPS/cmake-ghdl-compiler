@@ -1,5 +1,5 @@
 # cmake-ghdl-compiler
-Compiler Definition for GHDL usage. Use VHDL projects with outside build and standard CMake configuration as known for other applications.
+Compiler Definition for [GHDL](https://github.com/ghdl/ghdl) usage. Use VHDL projects with outside build and standard CMake configuration as known for other applications.
 
 ## Build
 ```bash
@@ -12,9 +12,8 @@ make -j`nproc`
 ## Dependencies
 [GHDL](https://github.com/ghdl/ghdl) and [GtkWave](https://github.com/gtkwave/gtkwave) is required to use this example.
 
-
 ## Compiler Definition
-Just use cmake/modules inside your project to compile and run VHDL projects with GHDL.
+Just use cmake/modules inside your project to compile and run VHDL projects with [GHDL](https://github.com/ghdl/ghdl).
 
 ## Known Issues
 Currently the ninja generator is not working. And the path is only valid for linux system.
