@@ -10,7 +10,7 @@ make -j`nproc`
 ```
 
 ## Dependencies
-(https://github.com/ghdl/ghdl)[GHDL] and (https://github.com/gtkwave/gtkwave)[GtkWave] is required to use this example.
+[GHDL](https://github.com/ghdl/ghdl) and [GtkWave](https://github.com/gtkwave/gtkwave) is required to use this example.
 
 
 ## Compiler Definition
