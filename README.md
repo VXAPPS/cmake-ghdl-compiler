@@ -16,4 +16,4 @@ make -j`nproc`
 Just use cmake/modules inside your project to compile and run VHDL projects with [GHDL](https://github.com/ghdl/ghdl).
 
 ## Known Issues
-Currently the ninja generator is not working. And the path is only valid for linux system.
+Currently the ninja generator is not working.
