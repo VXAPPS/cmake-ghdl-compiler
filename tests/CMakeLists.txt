@@ -35,5 +35,5 @@ add_executable(${PROJECT_NAME}
   binctr_tb.vhd
 )
 
-add_custom_target(simulation COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
-add_custom_target(simulation_ui COMMAND ${GTKWAVE} ${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
+add_custom_target(simulation COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw DEPENDS ${PROJECT_NAME} WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)
+add_custom_target(simulation_ui COMMAND ${GTKWAVE} ${PROJECT_NAME}.ghw DEPENDS simulation WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/tests)

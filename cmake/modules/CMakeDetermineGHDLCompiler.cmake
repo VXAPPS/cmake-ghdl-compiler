@@ -28,7 +28,8 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-set(CMAKE_GHDL_COMPILER "/usr/bin/ghdl")
+find_program(GHDL NAMES ghdl)
+set(CMAKE_GHDL_COMPILER ${GHDL})
 set(CMAKE_GHDL_COMPILER_ENV_VAR "GHDL")
 
 # Build a small source file to identify the compiler.
@@ -37,8 +38,6 @@ if(NOT CMAKE_GHDL_COMPILER_ID_RUN)
 endif()
 
 # configure all variables set in this file
-message(${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake)
-message(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in
   ${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake
   @ONLY

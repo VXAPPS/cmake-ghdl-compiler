@@ -44,7 +44,6 @@ set(CMAKE ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 #set(CMAKE_GHDL_STANDARD 93)
 #set(CMAKE_GHDL_STANDARD 08)
 
-# TODO Create a internal better workaround
 if (CMAKE_GHDL_STANDARD)
   set(CMAKE_GHDL_FLAGS "${CMAKE_GHDL_FLAGS} --std=${CMAKE_GHDL_STANDARD}")
 endif()
