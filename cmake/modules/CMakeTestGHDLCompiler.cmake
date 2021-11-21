@@ -35,9 +35,46 @@ if(CMAKE_GHDL_COMPILER_FORCED)
   return()
 endif()
 
+include(CMakeTestCompilerCommon)
+
+# This file is used by EnableLanguage in cmGlobalGenerator to
+# determine that the selected GHDL compiler can actually compile
+# and link the most basic of programs.   If not, a fatal error
+# is set and cmake stops processing commands and will not generate
+# any makefiles or projects.
+#if(NOT CMAKE_GHDL_COMPILER_WORKS)
+#  PrintTestCompilerStatus("GHDL")
+#  __TestCompiler_setTryCompileTargetType()
+#  file(WRITE ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testGHDLCompiler.vhd
+#    "entity ${CMAKE_PROJECT_NAME} is\n"
+#    "end test;\n"
+#    "architecture vx of test is\n"
+#    "begin\n"
+#    "end vx;\n")
+#  try_compile(CMAKE_GHDL_COMPILER_WORKS ${CMAKE_BINARY_DIR}
+#    ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeTmp/testGHDLCompiler.vhd
+#    OUTPUT_VARIABLE __CMAKE_GHDL_COMPILER_OUTPUT)
+#  # Move result from cache to normal variable.
+#  set(CMAKE_GHDL_COMPILER_WORKS ${CMAKE_GHDL_COMPILER_WORKS})
+#  unset(CMAKE_GHDL_COMPILER_WORKS CACHE)
+#  __TestCompiler_restoreTryCompileTargetType()
+#  if(NOT CMAKE_GHDL_COMPILER_WORKS)
+#    PrintTestCompilerResult(CHECK_FAIL "broken")
+#    file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeError.log
+#      "Determining if the GHDL compiler works failed with "
+#      "the following output:\n${__CMAKE_GHDL_COMPILER_OUTPUT}\n\n")
+#    string(REPLACE "\n" "\n  " _output "${__CMAKE_GHDL_COMPILER_OUTPUT}")
+#    message(FATAL_ERROR "The GHDL compiler\n  \"${CMAKE_GHDL_COMPILER}\"\n"
+#      "is not able to compile a simple test program.\nIt fails "
+#      "with the following output:\n  ${_output}\n\n"
+#      "CMake will not be able to correctly generate this project.")
+#  endif()
+#  PrintTestCompilerResult(CHECK_PASS "works")
+#  file(APPEND ${CMAKE_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/CMakeOutput.log
+#    "Determining if the GHDL compiler works passed with "
+#    "the following output:\n${__CMAKE_GHDL_COMPILER_OUTPUT}\n\n")
+#endif()
+
 # Re-configure to save learned information.
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in
-  ${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake
-  @ONLY
-  )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in ${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake @ONLY)
 include(${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake)

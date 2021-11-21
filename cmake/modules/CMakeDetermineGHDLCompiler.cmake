@@ -38,9 +38,6 @@ if(NOT CMAKE_GHDL_COMPILER_ID_RUN)
 endif()
 
 # configure all variables set in this file
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in
-  ${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake
-  @ONLY
-  )
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules/CMakeGHDLCompiler.cmake.in ${CMAKE_PLATFORM_INFO_DIR}/CMakeGHDLCompiler.cmake @ONLY)
 
 set(CMAKE_GHDL_COMPILER_ENV_VAR "GHDL")

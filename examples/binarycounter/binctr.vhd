@@ -33,26 +33,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
 entity binctr is
-    generic(N : positive := 26);
-    Port ( clk : in std_logic;
-           led : out std_logic);
+  generic( N : positive := 26 );
+  Port ( clk : in std_logic;
+         led : out std_logic );
 end binctr;
 
 architecture vx of binctr is
 
-    signal cntr_reg : unsigned(N-1 downto 0) := (others => '0');
-    signal cntr_next : unsigned(N-1 downto 0);
+  signal cntr_reg : unsigned( N - 1 downto 0 ) := ( others => '0' );
+  signal cntr_next : unsigned( N - 1 downto 0 );
 
 begin
-    process (clk)
-    begin
-       if ( rising_edge(clk)) then
-           cntr_reg <= cntr_next;
-       end if;
-    end process;
 
-    cntr_next <= cntr_reg + 1;
+  process ( clk )
+  begin
+    if ( rising_edge( clk ) ) then
+      cntr_reg <= cntr_next;
+    end if;
+  end process;
 
-    led <= cntr_reg(N-1);
+  cntr_next <= cntr_reg + 1;
+
+  led <= cntr_reg( N - 1 );
 
 end vx;

@@ -35,10 +35,8 @@ add_executable(${PROJECT_NAME}
   binctr_tb.vhd
 )
 
-add_custom_target(simulation COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_target(sim_binctr COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
-if(APPLE)
-  add_custom_target(simulation_ui COMMAND open /Applications/gtkwave.app ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS simulation WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
-else()
-  add_custom_target(simulation_ui COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS simulation WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+if(GTKWAVE)
+  add_custom_target(sim_binctr_wave COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS sim_binctr WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 endif()

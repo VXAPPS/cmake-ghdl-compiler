@@ -36,33 +36,35 @@ end binctr_tb;
 
 architecture sim of binctr_tb is
 
-    component binctr is
-    generic(N : positive := 26);
+  component binctr is
+    generic( N : positive := 26 );
     Port ( clk : in std_logic;
-           led : out std_logic);
-    end component;
+           led : out std_logic );
+  end component;
 
-    signal clk_sim : std_logic;
-    signal led_sim : std_logic;
+  signal clk_sim : std_logic;
+  signal led_sim : std_logic;
 
-    constant clk_period : time := 8 ns;
+  constant clk_period : time := 8 ns;
+
 begin
 
-    dut : binctr
-    generic map ( N => 3 )
-    port map ( clk => clk_sim, led => led_sim );
+  dut : binctr
+  generic map ( N => 3 )
+  port map ( clk => clk_sim,
+             led => led_sim );
 
-    clk_gen : process
-    begin
-        clk_sim <= '1';
-        wait for clk_period / 2;
-        clk_sim <= '0';
-        wait for clk_period / 2;
-    end process clk_gen;
+  clk_gen : process
+  begin
+    clk_sim <= '1';
+    wait for clk_period / 2;
+    clk_sim <= '0';
+    wait for clk_period / 2;
+  end process clk_gen;
 
-    sim_gen : process
-    begin
-        wait;
-    end process sim_gen;
+  sim_gen : process
+  begin
+    wait;
+  end process sim_gen;
 
 end sim;
