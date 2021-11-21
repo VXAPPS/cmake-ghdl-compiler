@@ -23,7 +23,7 @@ add_custom_target(sim_example COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} 
 
 Display the wave output from simulation of testbench. Example:
 ```cmake
-add_custom_target(sim_example_wave COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS simulation WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_target(sim_example_wave COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS sim_example WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 ```
 
 Run a custom target
@@ -32,4 +32,4 @@ make sim_example|sim_example_wave
 ```
 
 ## Known Issues
-Currently the ninja generator is not working.
+Currently the ninja generator is not able to elaborate the designs.

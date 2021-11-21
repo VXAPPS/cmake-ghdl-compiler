@@ -31,6 +31,7 @@
 project(binctr)
 
 add_executable(${PROJECT_NAME}
+  ../../README.md
   binctr.vhd
   binctr_io.xdc
 )
