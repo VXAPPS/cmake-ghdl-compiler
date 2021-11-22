@@ -35,3 +35,8 @@ add_executable(${PROJECT_NAME}
   binctr.vhd
   binctr_io.xdc
 )
+
+# HACK: Special foo for build.ninja. With target_link_options(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}) this will create LINK_FLAGS which is needed as component for ghdl
+if(CMAKE_GENERATOR STREQUAL "Ninja")
+  target_link_options(${PROJECT_NAME} PRIVATE ${PROJECT_NAME})
+endif()

@@ -38,6 +38,10 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 # CMake
 set(CMAKE ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
+if(CMAKE_VERBOSE_MAKEFILE)
+  set(CMAKE_GHDL_FLAGS "${CMAKE_GHDL_FLAGS} -v")
+endif()
+
 # Insert debug symbols if not in Release Mode
 if(NOT CMAKE_BUILD_TYPE STREQUAL Release)
   set(CMAKE_GHDL_FLAGS "${CMAKE_GHDL_FLAGS} -g")
@@ -46,7 +50,7 @@ endif()
 # Force VHDL Standard
 # https://ghdl.github.io/ghdl/using/ImplementationOfVHDL.html#vhdl-standards
 #set(CMAKE_GHDL_STANDARD 87)
-#set(CMAKE_GHDL_STANDARD 93)
+#set(CMAKE_GHDL_STANDARD 93) # Default
 #set(CMAKE_GHDL_STANDARD 08)
 
 if (CMAKE_GHDL_STANDARD)

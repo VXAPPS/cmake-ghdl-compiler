@@ -1,5 +1,5 @@
 # cmake-ghdl-compiler
-Compiler Definition for [GHDL](https://github.com/ghdl/ghdl) usage. Use VHDL projects with outside build and standard CMake configuration as known for other applications.
+Compiler Definition for [GHDL](https://github.com/ghdl/ghdl) usage. Use VHDL projects with outside build and standard [CMake](https://cmake.org) configuration as known for other applications.
 
 ## Build
 ```bash
@@ -32,4 +32,4 @@ make sim_example|sim_example_wave
 ```
 
 ## Known Issues
-Currently the ninja generator is not able to elaborate the designs.
+Currently the [Ninja](https://ninja-build.org) generator is not able to elaborate the designs, because he write too fast into the same definition file of [GHDL](https://github.com/ghdl/ghdl).

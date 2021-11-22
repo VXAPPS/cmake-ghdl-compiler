@@ -38,7 +38,12 @@ if(NOT CMAKE_GHDL_COMPILE_OBJECT)
 endif()
 
 if(NOT CMAKE_GHDL_LINK_EXECUTABLE)
-  set(CMAKE_GHDL_LINK_EXECUTABLE "<CMAKE_GHDL_COMPILER> -e --workdir=<CMAKE_CURRENT_BINARY_DIR> <TARGET>")
+  # HACK: Special foo for build.ninja. With target_link_options(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}) this will create LINK_FLAGS which is needed as component for ghdl
+  if(CMAKE_GENERATOR STREQUAL "Ninja")
+    set(CMAKE_GHDL_LINK_EXECUTABLE "cd <CMAKE_CURRENT_BINARY_DIR> && <CMAKE_GHDL_COMPILER> -e <FLAGS> --workdir=<CMAKE_CURRENT_BINARY_DIR> <LINK_FLAGS>")
+  else()
+    set(CMAKE_GHDL_LINK_EXECUTABLE "<CMAKE_GHDL_COMPILER> -e <FLAGS> --workdir=<CMAKE_CURRENT_BINARY_DIR> <TARGET>")
+  endif()
 endif()
 
 mark_as_advanced(CMAKE_VERBOSE_MAKEFILE)
