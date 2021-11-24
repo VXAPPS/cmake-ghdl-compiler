@@ -40,8 +40,8 @@ if(CMAKE_GENERATOR STREQUAL "Ninja")
   target_link_options(${PROJECT_NAME} PRIVATE ${PROJECT_NAME})
 endif()
 
-add_custom_target(sim_binctr COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_target(sim_binctr COMMAND ${CMAKE_GHDL_COMPILER} -r ${PROJECT_NAME} --stop-time=1000ns --disp-time --wave=${PROJECT_NAME}.ghw WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} USES_TERMINAL)
 
 if(GTKWAVE)
-  add_custom_target(sim_binctr_wave COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS sim_binctr WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
+  add_custom_target(sim_binctr_wave COMMAND ${GTKWAVE} ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.ghw DEPENDS sim_binctr WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} USES_TERMINAL)
 endif()

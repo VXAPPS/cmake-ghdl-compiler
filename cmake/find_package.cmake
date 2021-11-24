@@ -29,6 +29,6 @@
 #
 
 find_program(GTKWAVE NAMES gtkwave)
-if(APPLE AND EXISTS "/Applications/gtkwave.app")
-  set(GTKWAVE "open /Applications/gtkwave.app")
+if(APPLE AND EXISTS /Applications/gtkwave.app)
+  set(GTKWAVE open /Applications/gtkwave.app)
 endif()
