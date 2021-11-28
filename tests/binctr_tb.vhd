@@ -28,43 +28,31 @@
 -- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
 
 entity binctr_tb is
 end binctr_tb;
 
 architecture sim of binctr_tb is
 
-  component binctr is
-    generic( N : positive := 26 );
-    Port ( clk : in std_logic;
-           led : out std_logic );
-  end component;
-
-  signal clk_sim : std_logic;
+  signal clk_sim : std_logic := '1';
   signal led_sim : std_logic;
 
-  constant clk_period : time := 8 ns;
+  constant clk_period : time := 1 ns;
 
 begin
 
-  dut : binctr
+  DUT : entity work.binctr
   generic map ( N => 3 )
   port map ( clk => clk_sim,
              led => led_sim );
 
-  clk_gen : process
-  begin
-    clk_sim <= '1';
-    wait for clk_period / 2;
-    clk_sim <= '0';
-    wait for clk_period / 2;
-  end process clk_gen;
+  clk_sim <= not clk_sim after clk_period / 2;
 
-  sim_gen : process
+  SIM : process
   begin
     wait;
-  end process sim_gen;
+  end process;
 
 end sim;

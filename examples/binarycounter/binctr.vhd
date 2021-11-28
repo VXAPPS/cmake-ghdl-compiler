@@ -28,9 +28,9 @@
 -- OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 --
 
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity binctr is
   generic( N : positive := 26 );
@@ -45,7 +45,7 @@ architecture vx of binctr is
 
 begin
 
-  process ( clk )
+  TICK : process ( clk )
   begin
     if ( rising_edge( clk ) ) then
       cntr_reg <= cntr_next;
